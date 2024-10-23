@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <x-app-layout :meta-title="$post->title" :meta-description="$post->body">
 
     <x-slot name="header">
@@ -26,3 +27,18 @@
     </div>
 
 </x-app-layout>
+=======
+<x-layout :meta-title="$post->title" :meta-description="$post->body">
+    <h1>Edit Post</h1>
+    <a href="{{ route('posts.index') }}">{{ __('Back') }}</a>
+    <form method="POST" action="{{ route('posts.update', $post) }}">
+        @csrf
+        @method('PATCH')
+        @include('posts.form-fields')
+        <br />
+        <button type="submit">{{ __('Send') }}</button>
+        <br />
+    </form>
+
+</x-layout>
+>>>>>>> 4e4b122b329b6bd1c8e09b5759611822b9944003
