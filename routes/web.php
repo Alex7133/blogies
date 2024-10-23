@@ -12,7 +12,7 @@ Route::resource('blog', PostController::class)
     ->parameters(['blog' => 'post']);
 
 Route::view('nosotros', 'about')->name('about');
-
+// dsasdadads
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
