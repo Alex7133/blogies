@@ -11,10 +11,37 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center">
+                    <a class="px-3 py-2 {{ request()->routeIs('dashboard') ? 'text-sky-500' : 'text-slate-600 transition-colors hover:text-sky-500 dark:text-slate-400 dark:hover:text-sky-500' }}"
+                       href="{{ route('dashboard') }}"
+                    >
+                        Dashboard
+                    </a>
+                    <a class="px-3 py-2 {{ request()->routeIs('home') ? 'text-sky-500' : 'text-slate-600 transition-colors hover:text-sky-500 dark:text-slate-400 dark:hover:text-sky-500' }}"
+                       href="/"
+                    >
+                        Home
+                    </a>
+                    <a
+                        class="px-3 py-2 {{ request()->routeIs('posts.*') ? 'text-sky-500' : 'text-slate-600 transition-colors hover:text-sky-500 dark:text-slate-400 dark:hover:text-sky-500' }}"
+                        href="{{ route('posts.index') }}"
+                    >
+                        Blog
+                    </a>
+                    <a
+                        class="px-3 py-2 {{ request()->routeIs('about') ? 'text-sky-500' : 'text-slate-600 transition-colors hover:text-sky-500 dark:text-slate-400 dark:hover:text-sky-500' }}"
+                        href="{{ route('about') }}"
+                    >
+                        About
+                    </a>
+                    <a
+                        class="px-3 py-2 {{ request()->routeIs('contact') ? 'text-sky-500' : 'text-slate-600 transition-colors hover:text-sky-500 dark:text-slate-400 dark:hover:text-sky-500' }}"
+                        href="{{ route('contact') }}"
+                    >
+                        Contact
+                    </a>
+
+
                 </div>
             </div>
 
