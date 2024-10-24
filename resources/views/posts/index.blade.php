@@ -4,7 +4,6 @@
             Blog
         </h1>
 
-<<<<<<< HEAD
         @auth
             <div class="flex items-center justify-center">
                 <a
@@ -66,6 +65,15 @@
                         >
                             {{ $post->body }}
                         </p>
+                        @if($post->published_at)
+                            <p class="hidden text-slate-500 dark:text-slate-400 md:block">
+                                {{ \Carbon\Carbon::parse($post->published_at)->format('d M, Y') }}
+                            </p>
+                        @else
+                            <p class="hidden text-slate-500 dark:text-slate-400 md:block">
+                                No publicado
+                            </p>
+                        @endif
                     </div>
                     {{--<div class="flex space-x-2 p-5">
                         <img
@@ -89,21 +97,3 @@
         </div>
     </div>
 </x-blog-layout>
-=======
-    <h1>Blog</h1>
-    <a href="{{ route('posts.create') }}">{{ __('Create a new Post') }}</a>
-    @foreach($posts as $post)
-        <div style="display: flex; align-items: baseline">
-            <h2>
-                <a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a>
-            </h2>
-            <a href="{{ route('posts.edit', $post) }}">Edit</a>
-            <form action="{{ route('posts.destroy', $post) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
-        </div>
-    @endforeach
-</x-layout>
->>>>>>> 4e4b122b329b6bd1c8e09b5759611822b9944003

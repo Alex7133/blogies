@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StorePostRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -24,6 +25,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|min:5',
             'body' => 'required',
+            'published_at' => 'nullable|date',
         ];
     }
 }

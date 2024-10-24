@@ -5,7 +5,6 @@
         </h2>
     </x-slot>
 
-<<<<<<< HEAD
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -24,14 +23,3 @@
         </div>
     </div>
 </x-app-layout>
-=======
-    <form method="POST" action="{{ route('posts.store') }}">
-        @csrf
-        @include('posts.form-fields')
-        <br />
-        <button type="submit">{{ __('Send') }}</button>
-        <br />
-    </form>
-    <a href="{{ route('posts.index') }}">{{ __('Back') }}</a>
-</x-layout>
->>>>>>> 4e4b122b329b6bd1c8e09b5759611822b9944003

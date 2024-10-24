@@ -16,7 +16,10 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        // Filtrar solo los posts que tienen published_at no nulo y que ya se han publicado
+        $posts = Post::whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->get();
 
         return view('posts.index', compact('posts'));
     }
@@ -33,11 +36,16 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request)
     {
-        Post::create($request->validated());
+        // Crear un nuevo post con los datos validados, incluyendo el campo published_at si está presente
+        $validatedData = $request->validated();
+        $validatedData['published_at'] = now(); // Asigna la fecha y hora actuales
+
+        Post::create($validatedData);
 
         return to_route('posts.index')
             ->with('status', 'Post created successfully');
     }
+
 
     public function edit(Post $post)
     {
@@ -46,6 +54,7 @@ class PostController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
+        // Actualizar el post con los datos validados, incluyendo el campo published_at
         $post->update($request->validated());
 
         return to_route('posts.show', $post)
@@ -59,4 +68,6 @@ class PostController extends Controller
         return to_route('posts.index')
             ->with('status', 'Post deleted successfully');
     }
+
+
 }
