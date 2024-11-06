@@ -17,8 +17,7 @@ class PostController extends Controller
     public function index()
     {
         // Filtrar solo los posts que tienen published_at no nulo y que ya se han publicado
-        $posts = Post::whereNotNull('published_at')
-            ->where('published_at', '<=', now())
+        $posts = Post::where('published_at', '<=', now())
             ->get();
 
         return view('posts.index', compact('posts'));
